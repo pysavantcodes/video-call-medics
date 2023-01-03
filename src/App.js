@@ -1,15 +1,17 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CreateRoom from "./routes/CreateRoom";
-import Room from "./routes/Room";
+import './App.css';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import Room from "./pages/Room";
+import Main from "./pages/Main";
+import NotFound404 from "./pages/NotFound404";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" exact element={<CreateRoom />} />
-        <Route path="/room/:roomID" element={<Room />} />
-      </Routes>
+        <Switch>
+            <Route exact path='/room/:id' component={Room}/>
+            <Route exact path='/' component={Main}/>
+            <Route component={NotFound404}/>
+        </Switch>
     </BrowserRouter>
   );
 }
